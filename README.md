@@ -1,1 +1,2 @@
-# graduation_thesis_20202020年度卒業論文
+# 2020年度卒業論文
+Overleaf上で作成
