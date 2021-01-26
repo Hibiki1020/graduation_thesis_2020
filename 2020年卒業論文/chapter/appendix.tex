@@ -1,0 +1,27 @@
+\appendix
+\chapter{モンテカルロ自己位置推定}\label{app:monte_carlo}
+自己位置推定は最初の姿勢$x_{0}$,これまでの姿勢制御値$u_{1},u_{2}, ... ,u_{t}$, これまでのセンサ値のリスト$z_{1},z_{2}, ... ,z_{t}$からエージェントが現在の姿勢を更新する問題である. 自己位置推定を確率的な問題と扱うために現在の真の姿勢$x^{*}_{t}$に関する条件付き確率密度関数
+\begin{equation}
+    p_{t}(x|x_{0},u_{1},u_{2}, ... ,u_{t},z_{1},z_{2}, ... ,z_{t})
+\end{equation}
+を考える. $u_{1},u_{2}, ... ,u_{t}$を$u_{1:t}$, $z_{1},z_{2}, ... ,z_{t}$を$z_{1:t}$とおくと,
+\begin{equation}
+    p_{t}(x|x_{0}u_{1:t},z_{1:t})
+\end{equation}
+と表記できる. また, $u_{t}$を制御指令値と表記したがオドメトリやIMUなどのセンサを使った結果生じる移動量とすることもでき, ロボティクスにおいてはむしろそれが一般的である\cite{ueda_prob_robotics}. また移動量$u_{t}$については何らかの要因によって誤差が入っている時がある. 今回の実験では\ref{sec:dataset}節のとおり, 真値の移動量にガウス分布に従う誤差を加えた.\par 自己位置推定は時刻$t$における信念分布
+\begin{equation}\label{eq:believe_total}
+    b(t)=p_{t}(x|x_{0}u_{1:t},z_{1:t})
+\end{equation}
+を求めることに帰結する. \ref{eq:believe_total}をさらに分解すると入力である$x_{0},u_{1:t},z_{1:t}$, 状態遷移モデル$x_{t} \sim p(x|x_{t-1},u_{t})$, 観測モデル$z_{t} \sim p(z|x_{t})$に分解できる.\par 状態遷移モデル$x_{t} \sim p(x|x_{t-1},u_{t})$は信念分布$\hat{b}_{t}$として
+\begin{equation}\label{eq:motion_update}
+    \hat{b}(t)=p_{t}(x|x_{0},u_{1:t},z_{1:t-1})=p_{t}(x|x_{0},u_{1:t})
+\end{equation}
+と表現できる. $b_{t}$との違いはまだセンサ値$z_{t}$が反映されていない点である.この部分の詳細は\ref{sec:motion_update}節で詳しく述べる.\par 信念分布$b_{t}$は式\ref{eq:motion_update}の$\hat{b}_{t}$に\ref{sec:measurement_update}節で述べる観測モデルからの値$p(z_{t}|x)$を反映させることでできる. 式としては
+\begin{equation}\label{eq:believe_equal}
+    b_{t}(x)=\hat{b}_{t}(x|z_{t})=\frac{p(z_{t}|x)\hat{b}_{t}(x)}{p(z_{t})}=\eta p(z_{t}|x)\hat{b}_{t}(x)
+\end{equation}
+となる.
+
+
+
+%\chapter{発表業績一覧}

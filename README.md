@@ -1,1 +1,1 @@
-# graduation_thesis_2020
+# graduation_thesis_20202020年度卒業論文

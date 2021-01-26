@@ -1,0 +1,79 @@
+\documentclass[12pt]{jreport}
+\usepackage{amsl_thesis}
+\usepackage{tabularx}
+\usepackage{comment}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{url}
+%\usepackage{algorithm}
+\usepackage{algorithm2e}
+\usepackage{subcaption}
+\makeatletter
+\renewcommand{\@algocf@capt@plain}{above}% formerly {bottom}
+\makeatother
+\usepackage{algorithmic}
+\usepackage[dvipdfmx]{graphicx}
+
+\hypersetup{
+	colorlinks=false,
+	%bookmarks=true,
+	bookmarksnumbered=true,
+	pdfborder={0 0 0},
+	bookmarkstype=toc
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{機械学習を利用したメッシュ地図生成と \\ ビジュアルローカリゼーション}
+\author{河合 響}
+\bachelar  % 卒業論文(B4用)
+%\master % 修士論文(M2用)
+
+\studentid{153R173013} % 学生番号
+\gyear{2020} % 卒業年度
+\date{2021年2月1日} % 論文提出日
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+%% 概要
+\input{chapter/abstract}
+
+%% 目次
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic}
+
+%% 本文
+%% 序論
+\input{chapter/introduction}
+%% 原理
+\input{chapter/principle}
+
+%% 実験環境
+\input{chapter/environment}
+
+%% 実験結果&考察
+\input{chapter/result}
+
+%% 結論
+\input{chapter/conclusion}
+
+%% 謝辞
+\input{chapter/acknowledgment}
+
+%% 参考文献
+\renewcommand{\bibname}{参考文献}
+\bibliographystyle{junsrt}
+\bibliography{references}
+
+%% 付録(つけない可能性あり)
+\input{chapter/appendix}
+
+\end{document}
